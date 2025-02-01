@@ -1,20 +1,27 @@
-I’m trying to build a simple routing algorithm for an online map, but I’m not sure where to start.
+# LLM Exploration Week 3
 
-That’s a great project! Routing algorithms generally work by representing the map as a graph, where locations are nodes and roads are edges with weights like distance or travel time. Do you have any preference for the technology stack?
+## Session Focus
+We first used ChatGPT to give us intial ideas of what graph libraries we should use to implement our Dijkstras implementation and technicalities that come with certain libraries.
 
-I want something straightforward that I can build within a 5 days.
+### Conversation:
 
-Got it! There are a few ways to approach this:
+**Aman:** I’m trying to build a simple routing algorithm for an online map, but I’m not sure where to start.
+
+**Chat:** That’s a great project! Routing algorithms generally work by representing the map as a graph, where locations are nodes and roads are edges with weights like distance or travel time. Do you have any preference for the technology stack?
+
+**Aman:** I want something straightforward that I can build within a 5 days.
+
+**Chat:** Got it! There are a few ways to approach this:
 
 Custom Graph Implementation – You can manually define a graph and implement Dijkstra’s or A* search from scratch using Python.
 Using NetworkX – A powerful Python library for graph operations, where you can construct a graph and use built-in shortest path algorithms.
 Using OSMnx – A library specifically designed for working with OpenStreetMap data, letting you easily extract real-world road networks and analyze them with NetworkX.
 Would you prefer a fully custom implementation, or are you open to using existing tools?
 
-Existing tools would save me time. NetworkX and OSMnx look good. How do i use them for this work ?
+**Aman:** Existing tools would save me time. NetworkX and OSMnx look good. How do i use them for this work ?
 
 
-Use OSMnx to fetch the road network for a city.
+**Chat:** Use OSMnx to fetch the road network for a city.
 Convert it into a NetworkX graph, where roads are edges with a "length" attribute.
 Implement Dijkstra’s algorithm to find the shortest path between two points.
 Here’s an implementation you can use:
@@ -27,7 +34,7 @@ G = ox.graph_from_place(city_name, network_type=network_type)
 nodes, edges = ox.graph_to_gdfs(G)
 return G, nodes, edges
 
-ok what about the algorithm here
+**Aman:** ok what about the algorithm here
 January 31 at 9:55 PM
 import osmnx as ox
 import networkx as nx
@@ -73,7 +80,8 @@ print("Distance:", shortest_distance)
 
 why doesnt this work
 January 31 at 9:55 PM
-Nice work! This is a solid attempt, but I see a few issues:
+
+**Chat:** Nice work! This is a solid attempt, but I see a few issues:
 
 You’re using "weight" as the edge attribute, but in OSMnx, road lengths are usually stored under the "length" attribute. Your code might fail if "weight" isn’t present.
 You're modifying start_node inside the loop, which might cause unexpected behavior if no valid node is found.
@@ -81,15 +89,16 @@ The loop condition (while start_node != end_node) may fail if a node is disconne
 You're not checking if predecessors actually leads to start_node before backtracking the path. If there’s no path, this will throw an error.
 Would you like me to help refine it?
 
-fix these issues?
+**Aman:** fix these issues?
 
-def dijkstra(graph, start_node, end_node):
+**Chat:** def dijkstra(graph, start_node, end_node):
 """Implements Dijkstra's algorithm to find the shortest path between two nodes"""
 ~~ corrected code
 January 31 at 9:56 PM
-how can I optimize this further?
 
-Switch to A Search*
+**Aman:** how can I optimize this further?
+
+**Chat:** Switch to A Search*
 
 Instead of blindly exploring all nodes like Dijkstra, A* uses a heuristic function to estimate the remaining distance to the goal, making it significantly faster.
 The most common heuristic is the haversine distance (straight-line distance between two points on the Earth).
@@ -108,12 +117,18 @@ Parallelize Path Computation
 
 If you need to find multiple paths at once (e.g., routing for many users), you can use multithreading or GPU-based solutions like cuGraph in RAPIDS AI.
 
-I’d like to see the actual route on a map. Can we plot it?
-Yes! OSMnx has built-in functions to visualize the path. You can use ox.plot_graph_route() to overlay the shortest path on the road network.
+**Aman:** I’d like to see the actual route on a map. Can we plot it?
+
+**Chat:** Yes! OSMnx has built-in functions to visualize the path. You can use ox.plot_graph_route() to overlay the shortest path on the road network.
 
 Here’s how you do it:
 import matplotlib.pyplot as plt
 
-# Plot the shortest path on the map
+Plot the shortest path on the map
 fig, ax = ox.plot_graph_route(G, shortest_path, route_linewidth=4, node_size=0, bgcolor='white')
 plt.show()
+
+### Insights
+
+- LLMs were quite effective in providing niche libraries/methods needed or relevant to our project: provided us with two graph libraries in which we could easily translate city data into graphs
+- Good at fixing our misunderstandings about library usage
