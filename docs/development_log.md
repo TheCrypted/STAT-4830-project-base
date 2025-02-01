@@ -1,4 +1,6 @@
-# Self-Critique
+# Development Log
+
+## Week 3 Self-Critique
 After our first week in implementing a pathfinding algorithm for EVs, we have come across a multitude of strengths, weaknesses, and risks that we are faced with going forwards.
 
 **Strengths:**
