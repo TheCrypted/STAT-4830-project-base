@@ -1,6 +1,6 @@
 # Development Log
 
-# Week 7 Self-Critique
+# Week 3 Self-Critique
 After our first week in implementing a pathfinding algorithm for EVs, we have come across a multitude of strengths, weaknesses, and risks that we are faced with going forwards.
 
 **Strengths:**
@@ -72,7 +72,7 @@ Despite these advancements, there are still key areas where we need to focus our
 By addressing these areas, we can build a more scalable, data-driven solution while also exploring the strengths and limitations of different methodologies.  
 
 
-# Week 7 Self-Critique
+# Week 5 Self-Critique
 
 ## What We Accomplished  
 This week, we focused on developing a graph-based route optimization model for electric vehicles (EVs) in NYC. We implemented a Graph Neural Network (GNN) to predict energy efficiency, congestion levels, and route quality. Additionally, we:  
