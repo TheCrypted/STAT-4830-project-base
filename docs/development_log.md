@@ -1,6 +1,6 @@
 # Development Log
 
-## Week 3 Self-Critique
+# Week 7 Self-Critique
 After our first week in implementing a pathfinding algorithm for EVs, we have come across a multitude of strengths, weaknesses, and risks that we are faced with going forwards.
 
 **Strengths:**
@@ -24,7 +24,7 @@ After our first week in implementing a pathfinding algorithm for EVs, we have co
 **Resource Needs:**
 	Most important necessity currently is finding data for traffic and terrain in our preferred city (likely NYC) and then utilizing equations we have that relate these factors to energy consumption. Will look at topographic data on NYC, as well as traffic congestion data from congestion pricing policy. Also would be advisable that we focus on one EV model for the time being before expanding our scope to other models. Likely will be a Tesla model.
 
-# **Self-Critique – Week 5**  
+# Week 7 Self-Critique
 
 ## **Progress This Week**  
 This week, we made significant strides in implementing and visualizing our approach to solving the problem. Specifically, we **developed an A\*** (**A-star**) algorithm, which provided a structured method for pathfinding and decision-making. The core of our implementation involved:  
@@ -72,7 +72,7 @@ Despite these advancements, there are still key areas where we need to focus our
 By addressing these areas, we can build a more scalable, data-driven solution while also exploring the strengths and limitations of different methodologies.  
 
 
-# Week 7 Self-Critique: EV Route Optimization in NYC
+# Week 7 Self-Critique
 
 ## What We Accomplished  
 This week, we focused on developing a graph-based route optimization model for electric vehicles (EVs) in NYC. We implemented a Graph Neural Network (GNN) to predict energy efficiency, congestion levels, and route quality. Additionally, we:  
