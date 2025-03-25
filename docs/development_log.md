@@ -127,13 +127,7 @@ We initiated a preliminary implementation of a BERT-based route prediction model
 - Current implementation suffers from substantial computational overhead
 - Initial performance indicates need for extensive hyperparameter tuning
 - Uncertain whether the approach will yield actionable insights
-
-### Dataset Management
-A critical decision was made to discard a previously considered dataset due to:
-- Infrequent route mapping
-- Limited update frequency
-- Minimal predictive value for our core objectives
-
+- 
 ## Emerging Strategy: NYC Taxi Data Analysis
 
 We are pivoting towards utilizing NYC taxi data as a proxy for understanding urban mobility patterns. The potential approach involves:
