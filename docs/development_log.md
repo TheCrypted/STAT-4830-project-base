@@ -98,94 +98,60 @@ This week, we focused on developing a graph-based route optimization model for e
 - **Compare Against Baselines** – Implement A* search and Dijkstra’s algorithm to validate whether our GNN-based model actually improves upon traditional heuristics.  
 
 
-# Week 9 Self-Critique
+## Week 9 Self-Critique
 
-## Accomplishments and Technical Developments
+### What We Accomplished
+This week, we made significant progress in refining our Graph Neural Network (GNN) model, exploring alternative representations of our graph structure, and investigating the feasibility of using a BERT-based model for route prediction. Additionally, we began analyzing NYC taxi data to better understand urban mobility patterns. Key accomplishments include:
 
-### Graph Neural Network (GNN) Refinement
-This week we focused on addressing implementation challenges in our GNN approach, our datasets, and a new model idea we had (BERT).
+- **Graph Neural Network (GNN) Refinement**
+  - Iterated on node and edge feature representations to improve model performance.
+  - Addressed missing data and complexity concerns in our initial approach.
+  - Explored different ways to structure our graph beyond a simple city map representation.
+  
+- **BERT Model Exploration**
+  - Conducted an initial implementation of a BERT-based route prediction model.
+  - Identified computational challenges, including high processing overhead and complex tokenization.
+  - Determined the need for extensive hyperparameter tuning to improve performance.
 
-### Potential Node and Edge Representations
-#### Nodes
-##### We are in the process of iterating on the actual graph and how we want it to look like and what the ideal purpose of it should be in this whole project. We had it originally as simply a graph corresponding to the map of the given city we were working with. We are looking to reeavluate this original approach of simply looking for route rankings / route selection via the GNN (as assigning scores in this manner) b/c of missing data representations (poor data quality) as well as complexity concerns (learning too many patterns). We consdiered the following additional representations
-- Geographic intersections in the NYC road network
-- Charging station locations
-- Key urban landmarks with potential routing significance
-- Aggregated traffic zones
+- **NYC Taxi Data Analysis**
+  - Began investigating taxi route histories as a proxy for urban mobility.
+  - Explored the potential for mapping energy consumption patterns and route selection behaviors.
 
-#### Edges
-- Road segments between intersections
-- Travel time estimates
-- Energy consumption projections
-- Traffic density indicators
-- Elevation changes
-- Road type and speed limit information
+### What Worked Well
+- **Graph Representation Improvements** – We explored additional representations beyond simple route rankings, considering geographic intersections, charging stations, and traffic zones.
+- **GNN Feature Engineering** – Progress was made in refining node and edge attributes, incorporating travel time estimates, energy consumption projections, and elevation changes.
+- **Alternative Model Exploration** – Despite its challenges, the BERT-based approach provided valuable insights into sequence-based routing strategies.
+- **New Data Source Identification** – NYC taxi data emerged as a promising resource for understanding real-world route selection patterns.
 
-### BERT Model Exploration
-We initiated a preliminary implementation of a BERT-based route prediction model for NYC, which presented significant computational challenges:
-- Tokenization of the urban map proved complex
-- Current implementation suffers from substantial computational overhead
-- Initial performance indicates need for extensive hyperparameter tuning
-- Uncertain whether the approach will yield actionable insights
-- 
-## Emerging Strategy: NYC Taxi Data Analysis
+### Challenges & Areas for Improvement
+1. **Computational Complexity**
+   - The BERT model is computationally expensive and currently runs too slowly for practical implementation.
+   - Need to explore more efficient transformer architectures and model compression techniques.
 
-We are pivoting towards utilizing NYC taxi data as a proxy for understanding urban mobility patterns. The potential approach involves:
-- Analyzing taxi route histories
-- Extrapolating driving behaviors
-- Mapping energy consumption patterns
-- Understanding typical route selections in urban environments
+2. **Data Representation Issues**
+   - Defining an optimal graph structure remains a challenge.
+   - Balancing granularity with computational efficiency is crucial for improving performance.
 
-## Challenges and Limitations
+3. **Model Interpretability**
+   - Understanding how features influence route selection needs further refinement.
+   - Developing clear and actionable metrics for evaluating route quality is a priority.
 
-### Computational Complexity
-- BERT model requires significant optimization
-- Current implementations are prohibitively slow
-- Need to explore more efficient model architectures
+### Next Steps
+- **GNN Optimization**
+  - Refine node and edge feature engineering.
+  - Implement more sophisticated feature encoding techniques.
+  - Experiment with different graph representation strategies.
 
-### Data Representation
-- Determining the most meaningful graph structure
-- Balancing granularity and computational efficiency
-- Ensuring accurate representation of urban mobility
+- **BERT Model Improvement**
+  - Conduct thorough hyperparameter tuning.
+  - Explore model compression and alternative transformer architectures.
 
-### Model Interpretability
-- Developing clear metrics for route quality
-- Understanding how different features influence route selection
+- **Taxi Data Integration**
+  - Develop a robust data preprocessing pipeline.
+  - Extract key features from taxi trajectory data.
+  - Build preliminary predictive models based on urban mobility patterns.
 
-## Concrete Next Actions
+- **Comparative Analysis**
+  - Benchmark the emerging approaches against traditional routing algorithms (A* search, Dijkstra’s algorithm).
+  - Validate improvements in efficiency, accuracy, and practicality.
 
-### GNN Optimization
-- Refine node and edge feature engineering
-- Implement more sophisticated feature encoding
-- Experiment with different graph representation strategies
-
-### BERT Model Improvement
-- Conduct comprehensive hyperparameter tuning
-- Explore model compression techniques
-- Investigate alternative transformer architectures
-
-### Taxi Data Integration
-- Develop robust data preprocessing pipeline
-- Create feature extraction methodology
-- Build preliminary predictive models based on taxi trajectory data
-
-### Comparative Analysis
-- Benchmark our emerging approaches against traditional routing algorithms
-- Develop clear performance metrics
-- Create visualization tools to understand model behaviors
-
-## Resource and Research Needs
-- High-performance computing resources
-- Advanced machine learning optimization libraries
-- Comprehensive NYC mobility datasets
-- Consultation with urban mobility experts
-
-## Reflections
-Our current goals are to refine our GNN and see how we want it to integrate into the larger project idea. We are still workign through some data processing issues and integration of many datasets. The BERT model is also promising as a way to define our route, and we hope to create a comprehensive benchmark of the many algorithms we have tested to compare against going forward (that is making graphics comparing route optimization with A*, djikstras, GNNs, and BERT). 
-
-Ultimately, we hope to create comprehensive comparions / benchmarks as part of our final deliverables - tracking how we iterated over each of these different route finding algorithms and computational tools 
-
-
-
-
- 
