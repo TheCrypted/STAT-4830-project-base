@@ -180,10 +180,12 @@ We are pivoting towards utilizing NYC taxi data as a proxy for understanding urb
 - Comprehensive NYC mobility datasets
 - Consultation with urban mobility experts
 
-## Reflections and Hypotheses
-Our current trajectory suggests that a hybrid approach combining traditional graph algorithms with machine learning techniques might yield the most promising results. The NYC taxi data presents a unique opportunity to ground our theoretical models in empirical urban mobility patterns.
+## Reflections
+Our current goals are to refine our GNN and see how we want it to integrate into the larger project idea. We are still workign through some data processing issues and integration of many datasets. The BERT model is also promising as a way to define our route, and we hope to create a comprehensive benchmark of the many algorithms we have tested to compare against going forward (that is making graphics comparing route optimization with A*, djikstras, GNNs, and BERT). 
 
-By iteratively refining our approach and maintaining a flexible research strategy, we aim to develop a robust, data-driven electric vehicle routing solution.
+Ultimately, we hope to create comprehensive comparions / benchmarks as part of our final deliverables - tracking how we iterated over each of these different route finding algorithms and computational tools 
+
+
 
 
  
