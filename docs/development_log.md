@@ -24,7 +24,7 @@ After our first week in implementing a pathfinding algorithm for EVs, we have co
 **Resource Needs:**
 	Most important necessity currently is finding data for traffic and terrain in our preferred city (likely NYC) and then utilizing equations we have that relate these factors to energy consumption. Will look at topographic data on NYC, as well as traffic congestion data from congestion pricing policy. Also would be advisable that we focus on one EV model for the time being before expanding our scope to other models. Likely will be a Tesla model.
 
-# Week 7 Self-Critique
+# Week 5 Self-Critique
 
 ## **Progress This Week**  
 This week, we made significant strides in implementing and visualizing our approach to solving the problem. Specifically, we **developed an A\*** (**A-star**) algorithm, which provided a structured method for pathfinding and decision-making. The core of our implementation involved:  
@@ -72,7 +72,7 @@ Despite these advancements, there are still key areas where we need to focus our
 By addressing these areas, we can build a more scalable, data-driven solution while also exploring the strengths and limitations of different methodologies.  
 
 
-# Week 5 Self-Critique
+# Week 7 Self-Critique
 
 ## What We Accomplished  
 This week, we focused on developing a graph-based route optimization model for electric vehicles (EVs) in NYC. We implemented a Graph Neural Network (GNN) to predict energy efficiency, congestion levels, and route quality. Additionally, we:  
@@ -97,6 +97,99 @@ This week, we focused on developing a graph-based route optimization model for e
 - **Explore Transformer-Based Approaches** – We are considering testing a BERT model for route sequence optimization, which could provide better context-aware decision-making.  
 - **Compare Against Baselines** – Implement A* search and Dijkstra’s algorithm to validate whether our GNN-based model actually improves upon traditional heuristics.  
 
+
+# Week 9 Self-Critique
+
+## Accomplishments and Technical Developments
+
+### Graph Neural Network (GNN) Refinement
+This week we focused on addressing implementation challenges in our GNN approach, our datasets, and a new model idea we had (BERT).
+
+### Potential Node and Edge Representations
+#### Nodes
+##### We are in the process of iterating on the actual graph and how we want it to look like and what the ideal purpose of it should be in this whole project. We had it originally as simply a graph corresponding to the map of the given city we were working with. We are looking to reeavluate this original approach of simply looking for route rankings / route selection via the GNN (as assigning scores in this manner) b/c of missing data representations (poor data quality) as well as complexity concerns (learning too many patterns). We consdiered the following additional representations
+- Geographic intersections in the NYC road network
+- Charging station locations
+- Key urban landmarks with potential routing significance
+- Aggregated traffic zones
+
+#### Edges
+- Road segments between intersections
+- Travel time estimates
+- Energy consumption projections
+- Traffic density indicators
+- Elevation changes
+- Road type and speed limit information
+
+### BERT Model Exploration
+We initiated a preliminary implementation of a BERT-based route prediction model for NYC, which presented significant computational challenges:
+- Tokenization of the urban map proved complex
+- Current implementation suffers from substantial computational overhead
+- Initial performance indicates need for extensive hyperparameter tuning
+- Uncertain whether the approach will yield actionable insights
+
+### Dataset Management
+A critical decision was made to discard a previously considered dataset due to:
+- Infrequent route mapping
+- Limited update frequency
+- Minimal predictive value for our core objectives
+
+## Emerging Strategy: NYC Taxi Data Analysis
+
+We are pivoting towards utilizing NYC taxi data as a proxy for understanding urban mobility patterns. The potential approach involves:
+- Analyzing taxi route histories
+- Extrapolating driving behaviors
+- Mapping energy consumption patterns
+- Understanding typical route selections in urban environments
+
+## Challenges and Limitations
+
+### Computational Complexity
+- BERT model requires significant optimization
+- Current implementations are prohibitively slow
+- Need to explore more efficient model architectures
+
+### Data Representation
+- Determining the most meaningful graph structure
+- Balancing granularity and computational efficiency
+- Ensuring accurate representation of urban mobility
+
+### Model Interpretability
+- Developing clear metrics for route quality
+- Understanding how different features influence route selection
+
+## Concrete Next Actions
+
+### GNN Optimization
+- Refine node and edge feature engineering
+- Implement more sophisticated feature encoding
+- Experiment with different graph representation strategies
+
+### BERT Model Improvement
+- Conduct comprehensive hyperparameter tuning
+- Explore model compression techniques
+- Investigate alternative transformer architectures
+
+### Taxi Data Integration
+- Develop robust data preprocessing pipeline
+- Create feature extraction methodology
+- Build preliminary predictive models based on taxi trajectory data
+
+### Comparative Analysis
+- Benchmark our emerging approaches against traditional routing algorithms
+- Develop clear performance metrics
+- Create visualization tools to understand model behaviors
+
+## Resource and Research Needs
+- High-performance computing resources
+- Advanced machine learning optimization libraries
+- Comprehensive NYC mobility datasets
+- Consultation with urban mobility experts
+
+## Reflections and Hypotheses
+Our current trajectory suggests that a hybrid approach combining traditional graph algorithms with machine learning techniques might yield the most promising results. The NYC taxi data presents a unique opportunity to ground our theoretical models in empirical urban mobility patterns.
+
+By iteratively refining our approach and maintaining a flexible research strategy, we aim to develop a robust, data-driven electric vehicle routing solution.
 
 
  
