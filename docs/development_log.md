@@ -98,7 +98,7 @@ This week, we focused on developing a graph-based route optimization model for e
 - **Compare Against Baselines** – Implement A* search and Dijkstra’s algorithm to validate whether our GNN-based model actually improves upon traditional heuristics.  
 
 
-## Week 9 Self-Critique
+# Week 9 Self-Critique
 
 ### What We Accomplished
 This week, we made significant progress in refining our Graph Neural Network (GNN) model, exploring alternative representations of our graph structure, and investigating the feasibility of using a BERT-based model for route prediction. Additionally, we began analyzing NYC taxi data to better understand urban mobility patterns. Key accomplishments include:
