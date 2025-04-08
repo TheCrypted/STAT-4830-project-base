@@ -155,3 +155,45 @@ This week, we made significant progress in refining our Graph Neural Network (GN
   - Benchmark the emerging approaches against traditional routing algorithms (A* search, Dijkstra’s algorithm).
   - Validate improvements in efficiency, accuracy, and practicality.
 
+# Week 11 Self-Critique
+
+## What We Accomplished  
+This week, we focused on **optimizing both our BERT-based and GNN-based models**, resulting in substantial performance improvements and clearer insights into their applicability for EV routing. Key achievements include:
+
+- **BERT Model Optimization**
+  - Tuned hyperparameters and extended the training duration over many epochs.
+  - Achieved a **significant reduction in loss**, bringing it down to a negligible value.
+  - Improved the model’s ability to understand and predict optimal route sequences, showing better generalization across the dataset.
+
+- **GNN Optimization**
+  - Further refined our node and edge feature sets, integrating richer attributes such as time-of-day congestion patterns, slope-derived energy costs, and road quality scores.
+  - Improved the graph representation for NYC roads, incorporating more granular subdivisions and better encoding of directional information.
+  - Reduced overfitting and improved training stability through regularization techniques and model pruning.
+
+## What Worked Well
+- **Model Training Stability** – Both the BERT and GNN models trained smoothly over extended epochs, with loss curves indicating consistent convergence.
+- **Improved Predictive Accuracy** – Our optimized models were more aligned with real-world EV routing considerations, capturing context and constraints more effectively.
+- **Integrated Feature Importance** – Visualization tools helped us identify key features influencing predictions, increasing the interpretability of our models.
+
+## Challenges & Areas for Improvement
+- **Long Training Times** – Despite the performance gains, BERT still demands significant compute resources, especially for larger datasets and longer sequences.
+- **Scalability Concerns** – Both models perform well on curated subsets but need additional work to scale across larger city networks and more diverse traffic conditions.
+- **Limited Sequential Context Understanding** – While BERT handles some sequential patterns, its primary design may not fully capture long-term temporal dependencies in routing.
+
+## Next Steps
+- **Explore RNN-Based Modeling**
+  - Begin prototyping a **Recurrent Neural Network (RNN)** approach to better model sequential routing decisions and time-dependent behaviors.
+  - Compare RNN performance and loss curves against BERT and GNN models.
+  - Investigate hybrid models combining RNNs with graph-based structures for spatial-temporal learning.
+
+- **Model Benchmarking**
+  - Conduct a comprehensive comparative analysis of GNN, BERT, and future RNN models against traditional routing algorithms (A*, Dijkstra’s).
+  - Evaluate based on runtime efficiency, energy consumption predictions, and adaptability to real-world conditions.
+
+- **Scalability Testing**
+  - Apply the optimized models to a broader area of NYC and analyze model performance under realistic urban scenarios.
+
+- **Documentation & Reproducibility**
+  - Finalize detailed documentation of our model pipelines, including training configurations, evaluation metrics, and preprocessing steps.
+
+By continuing to expand our modeling techniques and validate against real-world data, we aim to build a robust, adaptable routing framework optimized for EV navigation in urban environments.
