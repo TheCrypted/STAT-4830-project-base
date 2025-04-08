@@ -24,7 +24,7 @@ After our first week in implementing a pathfinding algorithm for EVs, we have co
 **Resource Needs:**
 	Most important necessity currently is finding data for traffic and terrain in our preferred city (likely NYC) and then utilizing equations we have that relate these factors to energy consumption. Will look at topographic data on NYC, as well as traffic congestion data from congestion pricing policy. Also would be advisable that we focus on one EV model for the time being before expanding our scope to other models. Likely will be a Tesla model.
 
-# Week 7 Self-Critique
+# Week 5 Self-Critique
 
 ## **Progress This Week**  
 This week, we made significant strides in implementing and visualizing our approach to solving the problem. Specifically, we **developed an A\*** (**A-star**) algorithm, which provided a structured method for pathfinding and decision-making. The core of our implementation involved:  
@@ -72,7 +72,7 @@ Despite these advancements, there are still key areas where we need to focus our
 By addressing these areas, we can build a more scalable, data-driven solution while also exploring the strengths and limitations of different methodologies.  
 
 
-# Week 5 Self-Critique
+# Week 7 Self-Critique
 
 ## What We Accomplished  
 This week, we focused on developing a graph-based route optimization model for electric vehicles (EVs) in NYC. We implemented a Graph Neural Network (GNN) to predict energy efficiency, congestion levels, and route quality. Additionally, we:  
@@ -98,5 +98,60 @@ This week, we focused on developing a graph-based route optimization model for e
 - **Compare Against Baselines** – Implement A* search and Dijkstra’s algorithm to validate whether our GNN-based model actually improves upon traditional heuristics.  
 
 
+# Week 9 Self-Critique
 
- 
+### What We Accomplished
+This week, we made significant progress in refining our Graph Neural Network (GNN) model, exploring alternative representations of our graph structure, and investigating the feasibility of using a BERT-based model for route prediction. Additionally, we began analyzing NYC taxi data to better understand urban mobility patterns. Key accomplishments include:
+
+- **Graph Neural Network (GNN) Refinement**
+  - Iterated on node and edge feature representations to improve model performance.
+  - Addressed missing data and complexity concerns in our initial approach.
+  - Explored different ways to structure our graph beyond a simple city map representation.
+  
+- **BERT Model Exploration**
+  - Conducted an initial implementation of a BERT-based route prediction model.
+  - Identified computational challenges, including high processing overhead and complex tokenization.
+  - Determined the need for extensive hyperparameter tuning to improve performance.
+
+- **NYC Taxi Data Analysis**
+  - Began investigating taxi route histories as a proxy for urban mobility.
+  - Explored the potential for mapping energy consumption patterns and route selection behaviors.
+
+### What Worked Well
+- **Graph Representation Improvements** – We explored additional representations beyond simple route rankings, considering geographic intersections, charging stations, and traffic zones.
+- **GNN Feature Engineering** – Progress was made in refining node and edge attributes, incorporating travel time estimates, energy consumption projections, and elevation changes.
+- **Alternative Model Exploration** – Despite its challenges, the BERT-based approach provided valuable insights into sequence-based routing strategies.
+- **New Data Source Identification** – NYC taxi data emerged as a promising resource for understanding real-world route selection patterns.
+
+### Challenges & Areas for Improvement
+1. **Computational Complexity**
+   - The BERT model is computationally expensive and currently runs too slowly for practical implementation.
+   - Need to explore more efficient transformer architectures and model compression techniques.
+
+2. **Data Representation Issues**
+   - Defining an optimal graph structure remains a challenge.
+   - Balancing granularity with computational efficiency is crucial for improving performance.
+
+3. **Model Interpretability**
+   - Understanding how features influence route selection needs further refinement.
+   - Developing clear and actionable metrics for evaluating route quality is a priority.
+
+### Next Steps
+- **GNN Optimization**
+  - Refine node and edge feature engineering.
+  - Implement more sophisticated feature encoding techniques.
+  - Experiment with different graph representation strategies.
+
+- **BERT Model Improvement**
+  - Conduct thorough hyperparameter tuning.
+  - Explore model compression and alternative transformer architectures.
+
+- **Taxi Data Integration**
+  - Develop a robust data preprocessing pipeline.
+  - Extract key features from taxi trajectory data.
+  - Build preliminary predictive models based on urban mobility patterns.
+
+- **Comparative Analysis**
+  - Benchmark the emerging approaches against traditional routing algorithms (A* search, Dijkstra’s algorithm).
+  - Validate improvements in efficiency, accuracy, and practicality.
+
