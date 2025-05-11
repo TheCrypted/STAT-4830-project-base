@@ -63,6 +63,8 @@ We evaluated these predictions by:
    - h(n): Predicted cost to reach destination
    - Selects node with lowest f(n) until destination is reached
 
+<img width="1026" alt="image" src="https://github.com/user-attachments/assets/41417f39-27e8-4807-979c-666d099e10db" />
+
 ### Advanced Models
 
 #### BERT Model
