@@ -9,7 +9,7 @@ After our first week in implementing a pathfinding algorithm for EVs, we have co
 - The project has the potential to be integrated with real-time traffic data to adjust edge weights; we can enable dynamic route modifications that minimize energy consumption effectively.
 
 **Areas for Improvement:**
-- Poor performance on Large Graphs: Dijkstra’s Algorithm runs in O(V²) time with an unoptimized approach (without priority queues).
+- Poor performance on Large Graphs: Dijkstra's Algorithm runs in O(V²) time with an unoptimized approach (without priority queues).
 - Lack of consideration for real-time factors such as traffic and geographic factors such as terrain/change in altitude along a route
 - Our current graph model uses a undirected graph: could pose issues for one way streets, a commonality in NYC and other cities
 
@@ -53,12 +53,12 @@ Despite these advancements, there are still key areas where we need to focus our
    - Standardizing data formats, handling missing values, and feature encoding should be our next priorities.  
 
 ### **2. Exploring Alternative Approaches**  
-   - While A\* provided a structured approach, it’s important to consider **machine learning-based alternatives**, such as a **neural network model**.  
+   - While A\* provided a structured approach, it's important to consider **machine learning-based alternatives**, such as a **neural network model**.  
    - A neural network could potentially learn patterns in the data that a traditional search algorithm might overlook, leading to better generalization.  
    - We need to test different architectures, experiment with hyperparameter tuning, and compare neural networks against our A\* model to determine feasibility.  
 
 ### **3. Performance Optimization**  
-   - One observation from our implementation was that the A\* algorithm’s efficiency heavily depends on the heuristic function.  
+   - One observation from our implementation was that the A\* algorithm's efficiency heavily depends on the heuristic function.  
    - Further optimization could include **precomputing heuristic values** or **using more sophisticated heuristics** (e.g., learning-based heuristics).  
    - We should analyze time complexity and consider **pruning techniques** to improve runtime performance.  
 
@@ -90,110 +90,211 @@ This week, we focused on developing a graph-based route optimization model for e
 ## Challenges & Areas for Improvement  
 - **Data Integration & Cleaning Issues** – We still face inconsistencies in edge and node attributes, leading to gaps in model inputs. Some nodes lack key features like speed limits or elevation, which might impact route scoring.  
 - **Probabilistic Route Selection Refinements** – Our softmax-based selection is sensitive to score variations. Some low-quality routes are occasionally selected, and we may need to fine-tune weight assignments.  
-- **Better Evaluation Metrics** – While we score routes using a combined weighting system, we lack a benchmark comparison against traditional methods like A* search or Dijkstra’s algorithm.  
+- **Better Evaluation Metrics** – While we score routes using a combined weighting system, we lack a benchmark comparison against traditional methods like A* search or Dijkstra's algorithm.  
 
 ## Next Steps  
 - **Fix Data Preprocessing Issues** – Ensure all node and edge attributes are correctly assigned, reducing missing values in energy cost and congestion features.  
 - **Explore Transformer-Based Approaches** – We are considering testing a BERT model for route sequence optimization, which could provide better context-aware decision-making.  
-- **Compare Against Baselines** – Implement A* search and Dijkstra’s algorithm to validate whether our GNN-based model actually improves upon traditional heuristics.  
+- **Compare Against Baselines** – Implement A* search and Dijkstra's algorithm to validate whether our GNN-based model actually improves upon traditional heuristics.  
 
 
 # Week 9 Self-Critique
 
 ### What We Accomplished
-This week, we made significant progress in refining our Graph Neural Network (GNN) model, exploring alternative representations of our graph structure, and investigating the feasibility of using a BERT-based model for route prediction. Additionally, we began analyzing NYC taxi data to better understand urban mobility patterns. Key accomplishments include:
+This week, we made a significant pivot in our project by switching from NYC data to Michigan data, which proved to be more readily accessible and usable for our EV routing purposes. We refined our Graph Neural Network (GNN) model, explored alternative representations of our graph structure, and investigated the feasibility of using a BERT-based model for route prediction. Key accomplishments include:
+
+- **Data Source Transition to Michigan**
+  - Successfully acquired and integrated the Extended Vehicle Energy Dataset (eVED) from Ann Arbor, Michigan
+  - Began working with Electric Vehicle Trip Energy Data from Michigan, containing 1-minute interval driving records
+  - This data provides actual energy consumption metrics in KwH, which was lacking in our previous datasets
 
 - **Graph Neural Network (GNN) Refinement**
-  - Iterated on node and edge feature representations to improve model performance.
-  - Addressed missing data and complexity concerns in our initial approach.
-  - Explored different ways to structure our graph beyond a simple city map representation.
+  - Iterated on node and edge feature representations to improve model performance
+  - Addressed missing data and complexity concerns in our initial approach
+  - Adapted our graph structure to work with Michigan road networks using OSMnx
   
 - **BERT Model Exploration**
-  - Conducted an initial implementation of a BERT-based route prediction model.
-  - Identified computational challenges, including high processing overhead and complex tokenization.
-  - Determined the need for extensive hyperparameter tuning to improve performance.
-
-- **NYC Taxi Data Analysis**
-  - Began investigating taxi route histories as a proxy for urban mobility.
-  - Explored the potential for mapping energy consumption patterns and route selection behaviors.
+  - Conducted an initial implementation of a BERT-based route prediction model
+  - Identified computational challenges, including high processing overhead and complex tokenization
+  - Determined the need for extensive hyperparameter tuning to improve performance
 
 ### What Worked Well
-- **Graph Representation Improvements** – We explored additional representations beyond simple route rankings, considering geographic intersections, charging stations, and traffic zones.
-- **GNN Feature Engineering** – Progress was made in refining node and edge attributes, incorporating travel time estimates, energy consumption projections, and elevation changes.
-- **Alternative Model Exploration** – Despite its challenges, the BERT-based approach provided valuable insights into sequence-based routing strategies.
-- **New Data Source Identification** – NYC taxi data emerged as a promising resource for understanding real-world route selection patterns.
+- **Michigan Data Integration** – The Michigan datasets provided much more concrete energy consumption metrics and road attributes compared to what we had for NYC
+- **Graph Representation Improvements** – We explored additional representations beyond simple route rankings, considering geographic intersections, charging stations, and elevation data
+- **GNN Feature Engineering** – Progress was made in refining node and edge attributes, incorporating travel time estimates, energy consumption projections, and elevation changes
+- **Alternative Model Exploration** – Despite its challenges, the BERT-based approach provided valuable insights into sequence-based routing strategies
 
 ### Challenges & Areas for Improvement
-1. **Computational Complexity**
-   - The BERT model is computationally expensive and currently runs too slowly for practical implementation.
-   - Need to explore more efficient transformer architectures and model compression techniques.
+1. **Data Integration Across Sources**
+   - Calibrating latitude/longitude between different data sources required mathematical transformations
+   - Need to better integrate the road network data with actual EV behavior records
 
-2. **Data Representation Issues**
-   - Defining an optimal graph structure remains a challenge.
-   - Balancing granularity with computational efficiency is crucial for improving performance.
+2. **Computational Complexity**
+   - The BERT model is computationally expensive and currently runs too slowly for practical implementation
+   - Need to explore more efficient transformer architectures and model compression techniques
 
 3. **Model Interpretability**
-   - Understanding how features influence route selection needs further refinement.
-   - Developing clear and actionable metrics for evaluating route quality is a priority.
+   - Understanding how features influence route selection needs further refinement
+   - Developing clear and actionable metrics for evaluating route quality is a priority
 
 ### Next Steps
+- **Michigan Data Processing**
+  - Further refine our preprocessing pipeline for the Michigan datasets
+  - Extract and normalize features like elevation, speed limits, and energy consumption
+
 - **GNN Optimization**
-  - Refine node and edge feature engineering.
-  - Implement more sophisticated feature encoding techniques.
-  - Experiment with different graph representation strategies.
+  - Refine node and edge feature engineering specifically for Michigan road networks
+  - Implement more sophisticated feature encoding techniques
+  - Experiment with different graph representation strategies
 
 - **BERT Model Improvement**
-  - Conduct thorough hyperparameter tuning.
-  - Explore model compression and alternative transformer architectures.
-
-- **Taxi Data Integration**
-  - Develop a robust data preprocessing pipeline.
-  - Extract key features from taxi trajectory data.
-  - Build preliminary predictive models based on urban mobility patterns.
+  - Conduct thorough hyperparameter tuning
+  - Explore model compression and alternative transformer architectures
 
 - **Comparative Analysis**
-  - Benchmark the emerging approaches against traditional routing algorithms (A* search, Dijkstra’s algorithm).
-  - Validate improvements in efficiency, accuracy, and practicality.
+  - Benchmark the emerging approaches against traditional routing algorithms (A* search, Dijkstra's algorithm)
+  - Validate improvements in efficiency, accuracy, and practicality
 
 # Week 11 Self-Critique
 
 ## What We Accomplished  
-This week, we focused on **optimizing both our BERT-based and GNN-based models**, resulting in substantial performance improvements and clearer insights into their applicability for EV routing. Key achievements include:
+This week, we focused on **optimizing our three primary models: BERT-based, GNN-based, and a new Reinforcement Learning (RL) approach** for the Michigan dataset, resulting in substantial performance improvements. Key achievements include:
 
 - **BERT Model Optimization**
-  - Tuned hyperparameters and extended the training duration over many epochs.
-  - Achieved a **significant reduction in loss**, bringing it down to a negligible value.
-  - Improved the model’s ability to understand and predict optimal route sequences, showing better generalization across the dataset.
+  - Tuned hyperparameters and extended the training duration over many epochs
+  - Achieved a **significant reduction in loss**, bringing it down to a negligible value
+  - Improved the model's ability to understand and predict optimal route sequences, showing better generalization across the Michigan dataset
 
 - **GNN Optimization**
-  - Further refined our node and edge feature sets, integrating richer attributes such as time-of-day congestion patterns, slope-derived energy costs, and road quality scores.
-  - Improved the graph representation for NYC roads, incorporating more granular subdivisions and better encoding of directional information.
-  - Reduced overfitting and improved training stability through regularization techniques and model pruning.
+  - Further refined our node and edge feature sets, integrating richer attributes such as time-of-day congestion patterns, slope-derived energy costs, and road quality scores
+  - Improved the graph representation for Michigan roads, incorporating more granular subdivisions and better encoding of directional information
+  - Reduced overfitting and improved training stability through regularization techniques and model pruning
+
+- **Reinforcement Learning Implementation**
+  - Developed an RL approach to route optimization that learns from the Michigan EV data
+  - Created reward functions based on energy consumption and travel time
+  - Began evaluating the model's performance against our other approaches
 
 ## What Worked Well
-- **Model Training Stability** – Both the BERT and GNN models trained smoothly over extended epochs, with loss curves indicating consistent convergence.
-- **Improved Predictive Accuracy** – Our optimized models were more aligned with real-world EV routing considerations, capturing context and constraints more effectively.
-- **Integrated Feature Importance** – Visualization tools helped us identify key features influencing predictions, increasing the interpretability of our models.
+- **GNN Performance** – The GNN model has emerged as our strongest performer, showing the most promising results for predicting energy-efficient routes in the Michigan dataset
+- **Model Training Stability** – All three models (BERT, GNN, RL) trained smoothly over extended epochs, with loss curves indicating consistent convergence
+- **Improved Predictive Accuracy** – Our optimized models were more aligned with real-world EV routing considerations, capturing context and constraints more effectively
+- **Integrated Feature Importance** – Visualization tools helped us identify key features influencing predictions, increasing the interpretability of our models
 
 ## Challenges & Areas for Improvement
-- **Long Training Times** – Despite the performance gains, BERT still demands significant compute resources, especially for larger datasets and longer sequences.
-- **Scalability Concerns** – Both models perform well on curated subsets but need additional work to scale across larger city networks and more diverse traffic conditions.
-- **Limited Sequential Context Understanding** – While BERT handles some sequential patterns, its primary design may not fully capture long-term temporal dependencies in routing.
+- **Data Integration Limitations**
+  - Still facing challenges in properly integrating diverse data sources
+  - Mathematical transformations on coordinates only partially resolved location mapping issues
+  - Limited access to specialized EV behavior data remains a constraint
+
+- **Long Training Times** – Despite the performance gains, BERT still demands significant compute resources, especially for larger datasets and longer sequences
+- **Scalability Concerns** – All models perform well on curated subsets but need additional work to scale across larger networks and more diverse traffic conditions
 
 ## Next Steps
-- **Explore RNN-Based Modeling**
-  - Begin prototyping a **Recurrent Neural Network (RNN)** approach to better model sequential routing decisions and time-dependent behaviors.
-  - Compare RNN performance and loss curves against BERT and GNN models.
-  - Investigate hybrid models combining RNNs with graph-based structures for spatial-temporal learning.
+- **Further Model Comparison and Validation**
+  - Complete comprehensive comparative analysis of our three approaches (GNN, BERT, RL)
+  - Evaluate based on runtime efficiency, energy consumption predictions, and adaptability to real-world conditions
 
-- **Model Benchmarking**
-  - Conduct a comprehensive comparative analysis of GNN, BERT, and future RNN models against traditional routing algorithms (A*, Dijkstra’s).
-  - Evaluate based on runtime efficiency, energy consumption predictions, and adaptability to real-world conditions.
+- **Improved Data Integration**
+  - Develop more sophisticated methods for aligning geographical data across different sources
+  - Create robust pipelines that can work with limited EV-specific data
 
 - **Scalability Testing**
-  - Apply the optimized models to a broader area of NYC and analyze model performance under realistic urban scenarios.
+  - Apply the optimized models to broader areas of Michigan and analyze model performance under realistic scenarios
 
 - **Documentation & Reproducibility**
-  - Finalize detailed documentation of our model pipelines, including training configurations, evaluation metrics, and preprocessing steps.
+  - Finalize detailed documentation of our model pipelines, including training configurations, evaluation metrics, and preprocessing steps
+  - Prepare for potential application of our models to other geographical areas if provided with appropriate data
 
-By continuing to expand our modeling techniques and validate against real-world data, we aim to build a robust, adaptable routing framework optimized for EV navigation in urban environments.
+# Week 13 Self-Critique
+
+## What We Accomplished
+This week, we focused on refining our Reinforcement Learning model and formalizing our Exploratory Data Analysis (EDA) process to better understand the Michigan dataset. Key accomplishments include:
+
+- **RL Model Refinement**
+  - Enhanced our Q-learning algorithm with improved state representation to better capture road network characteristics
+  - Implemented a more sophisticated reward function that balances energy efficiency, travel time, and route practicality
+  - Developed a custom environment that more accurately simulates EV energy consumption under different driving conditions
+  - Integrated elevation data more effectively into the RL state space, improving route optimization for hilly terrains
+
+- **Formalized EDA Completion**
+  - Created comprehensive visualizations of energy consumption patterns across different routes and road types
+  - Analyzed correlations between elevation changes, vehicle speed, and energy usage
+  - Developed interactive maps showing energy-efficient routes compared to time-efficient routes
+  - Identified key factors that most significantly impact EV energy consumption in Michigan's topography and road network
+
+- **Prediction Enhancements**
+  - Generated more accurate predictions of energy consumption for specific routes
+  - Created a benchmarking system to compare our three model approaches against traditional routing algorithms
+  - Developed metrics to quantify energy savings across different route options
+  - Built visualization tools to communicate potential energy savings to users
+
+## What Worked Well
+- **RL Approach Improvements** – While still not matching GNN performance, our reinforcement learning model now shows much stronger results with the refined reward structure
+- **Data Storytelling** – Our formalized EDA has created compelling visualizations that clearly communicate the factors influencing EV energy consumption
+- **Prediction Accuracy** – Our models now generate more reliable energy consumption estimates across various route types and conditions
+- **Integration of Elevation Data** – Successfully incorporated topographical information into all models, with particular benefits for the Michigan dataset
+
+## Challenges & Areas for Improvement
+- **Model Transfer Limitations** – Our models remain somewhat location-specific and would require retraining for application to other geographic regions
+- **Computational Efficiency** – The RL model still requires significant computational resources, making real-time applications challenging
+- **Weather-Related Factors** – Current models have limited ability to account for weather conditions, which significantly impact EV performance
+- **Data Gaps** – Some areas within our Michigan dataset still have sparse coverage, creating prediction uncertainties
+
+## Final Development Priorities
+- **Cross-Model Ensemble** – Explore combining predictions from all three models to leverage their complementary strengths
+- **Visualization Dashboard** – Complete the development of an interactive tool for visualizing route options and energy predictions
+- **Documentation Finalization** – Ensure all code, models, and data processing pipelines are thoroughly documented
+- **Performance Optimization** – Make final adjustments to improve model inference speed for potential real-world applications
+
+This week's work has significantly improved our understanding of the Michigan dataset's characteristics and enhanced our ability to predict energy consumption patterns. The formalized EDA now provides a robust foundation for communicating our findings, while the refinements to our RL model have meaningfully improved its performance, even though the GNN approach continues to lead in overall effectiveness.
+
+# Final Project Reflection
+
+## Project Evolution and Outcomes
+As we complete this project, it's clear that our work evolved significantly from our initial NYC-focused approach to our final Michigan-based implementation. This evolution was driven primarily by data availability constraints and our growing understanding of the problem space.
+
+## Key Findings and Model Performance
+Our project culminated in the development of three distinct models:
+
+1. **Graph Neural Network (GNN)** - This emerged as our strongest performer by a significant margin, providing the most accurate and practical results for both:
+   - Predicting optimal routes to minimize time and energy consumption
+   - Estimating energy consumption for trips based on geographical data, traffic patterns, and infrastructure
+
+2. **BERT-based Model** - While showing promise in sequence prediction, it faced computational efficiency challenges and had difficulty scaling to larger route networks
+
+3. **Reinforcement Learning (RL) Model** - Demonstrated interesting adaptability but couldn't match the GNN's performance in real-world prediction scenarios
+
+## Data Integration Challenges
+One of our most significant challenges throughout the project was data integration:
+- We struggled with locating and integrating sources that were limited and unrelated
+- Mathematical transformations on coordinates only partially addressed location mapping problems
+- Obtaining free, accessible EV behavior data proved difficult
+- Our final models are ready to work with more specialized data if provided in the future
+
+## Key Data Sources
+Our final implementation relied heavily on:
+
+- **OSMnx**
+  - Python package for processing street networks (using OpenStreetMap API)
+  - Essential for creating our graph structure
+
+- **Extended Vehicle Energy Dataset (eVED)**
+  - GPS trace records from 383 vehicles driving over 370k miles in Ann Arbor, Michigan
+  - Provided road elevation, speed limits, and approximations of energy usage for each trip
+  - Reference: "Large Scale Dataset for Vehicle Energy Consumption Research" (Oh et al., 2020)
+
+- **Electric Vehicle Trip Energy Data**
+  - 1-minute interval driving records of EVs (June 2015 - June 2016)
+  - Contains energy consumption in KwH for each trip
+  - Includes average latitude/longitude and battery metrics (current, voltage, temperature)
+
+## Project Pivot
+With our successive self-critiques, we realized that our biggest problem was data availability, and the original NYC-focused problem we proposed simply did not have feasible resources to solve effectively. This led to our pivot toward energy consumption prediction for vehicles in Michigan, where better data was available.
+
+## Value Proposition
+Our algorithms now provide two valuable predictions:
+1. An optimal route that minimizes both time to destination and energy consumption
+2. An estimate of energy consumption for a trip based on geographical data, traffic patterns, infrastructure, and trip endpoints
+
+These outcomes, while different from our initial vision, represent significant progress in the field of energy-efficient EV routing and highlight the importance of data availability in machine learning projects.
