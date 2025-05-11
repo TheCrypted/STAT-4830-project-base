@@ -139,6 +139,7 @@ Results:
 - Successfully predicted energy-efficient routes
 - Example comparison: Dijkstra's path (14,037.92m) vs. GNN path (14,652.49m) with improved energy efficiency
 - Average loss for energy consumption prediction of about 0.49
+<img width="338" alt="image" src="https://github.com/user-attachments/assets/6fa92f08-5e02-491f-b2c4-20dd463cd4e2" />
 
 <img width="510" alt="image" src="https://github.com/user-attachments/assets/909554a2-8333-460e-89c7-61daa5bf3dd4" />
 
