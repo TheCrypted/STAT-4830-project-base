@@ -94,6 +94,8 @@ Results:
 - ~65% training accuracy
 - Loss remained relatively high due to BERT being trained primarily for text sequences
 
+<img width="505" alt="image" src="https://github.com/user-attachments/assets/ebd21f92-895b-45af-8bf6-82b4d8e42b29" />
+
 #### Reinforcement Learning
 
 Based on "Multi-objective reinforcement learning approach for trip recommendation" (Chen et al., 2023), we implemented:
