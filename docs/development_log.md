@@ -290,7 +290,7 @@ Our final implementation relied heavily on:
   - Includes average latitude/longitude and battery metrics (current, voltage, temperature)
 
 ## Project Pivot
-With our successive self-critiques, we realized that our biggest problem was data availability, and the original NYC-focused problem we proposed simply did not have feasible resources to solve effectively. This led to our pivot toward energy consumption prediction for vehicles in Michigan, where better data was available.
+With our successive self-critiques, we realized that our biggest problem was data availability, and the original NYC-focused problem we proposed simply did not have feasible resources to solve effectively. This led to our pivot toward energy consumption prediction for vehicles in Michigan, where better data was available. But still, we were unable to get some data on some of our relavent problems, and we were forced to reevaluate waht type of data was even present, so we decided upon using the current iteration that relied on analyses of michigan based vehicle energy performance.
 
 ## Value Proposition
 Our algorithms now provide two valuable predictions:
