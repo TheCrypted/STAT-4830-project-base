@@ -118,6 +118,8 @@ Results:
 - Model showed learning via improved recent average reward but remained noisy
 - Training time limitations prevented full convergence given the massive state space
 
+<img width="505" alt="image" src="https://github.com/user-attachments/assets/311b3dd7-720b-489e-9bdc-ccd4495b81bd" />
+
 #### Graph Neural Network for Energy Consumption
 
 Inspired by "Electric vehicle energy consumption modelling and prediction based on road information" (Wang et al., 2015), we developed a GNN that:
