@@ -17,7 +17,6 @@ Our key contributions include:
 ├── src/                  # Source code for final models and algorithms
 ├── notebooks/            # Jupyter notebooks for analysis and demonstrations
 ├── docs/                 # Documentation files
-├── dataset                 # dataset files
 ├── report.md             # Comprehensive project report with methodology and findings
 ├── requirements.txt      # Python dependencies
 └── named_development_history/ # Archive of development process and iterations
@@ -53,7 +52,8 @@ The `named_development_history/` folder contains our journey through model explo
    - OpenStreetMap API is used but doesn't require authentication
 
 5. Running Code
-   - The Code works in isolation as long as the data is stored locally. (we have attached the data to a folder called dataset).
+   - The Code works in isolation as long as the data is stored locally. The link to the dataset is attached below.
+   - https://bitbucket.org/datarepo/eved-dataset/src/main/ 
 
 
 ### Demo Notebook
