@@ -1,209 +1,65 @@
-# STAT 4830 Project Repository
+# Optimizing Vehicle Routing with Graph-Based and Probabilistic Models
 
-Welcome to your project repository! This template helps you develop and implement an optimization project over the semester.
+## Team Members
+Vishva Gajaraj, Darren Mo, Aman Sharma
 
-## Getting Started
+## High-Level Summary
 
-1. **Finding Your Project Idea**
-   - Start with our [Project Ideas Guide](docs/finding_project_ideas.md)
-   - Use AI to explore and refine your ideas
-   - Take time to find something you care about
+This project tackles the challenge of optimizing vehicle routing by developing algorithms that minimize both travel time and energy consumption. We've created a comprehensive approach that provides more detailed insights than current routing applications by considering trip-specific features, geographic data, infrastructure elements, and traffic patterns.
 
-   It's very important you learn to use AI tools in your work! [Noam Brown](https://x.com/polynoamial/status/1870307185961386366) (OpenAI) says that students should...
-   > Practice working with AI. Human+AI will be superior to human or AI alone for the foreseeable future. Those who can work most effectively with AI will be the most highly valued.
-
-   ![Noam tweet](figures/noam.png)
-
-2. **Week 3 Deliverable**
-   - Follow the [Week 3 Instructions](docs/assignments/week3_deliverable_instructions.md)
-   - Required components:
-     - Initial report draft
-     - Self-critique document analyzing your report's strengths and weaknesses
-     - Supporting Jupyter notebooks/code
-   - Due: Friday, January 31, 2025
-
-## Project Development Cycle
-
-Each week follows an OODA (Observe, Orient, Decide, Act) loop that helps you improve your project systematically:
-
-![Project Development Cycle - A diagram showing the OODA loop (Observe, Orient, Decide, Act) adapted for project development. Each phase has specific activities: Observe (Review Report, Check Results), Orient (Write Critique, Find Gaps), Decide (Plan Changes, Set Goals), and Act (Code, Run Tests). The phases are connected by arrows showing the flow of work, with a feedback loop labeled "Iterative Development" completing the cycle.](docs/figures/ooda_loop.png)
-
-Each cycle produces specific deliverables:
-- OBSERVE: Updated report draft
-- ORIENT: Self-critique document
-- DECIDE: Next actions plan
-- ACT: Code changes & results
-
-See the [Week 3 Instructions](docs/assignments/week3_deliverable_instructions.md) for detailed guidance on writing your first self-critique.
-
-## Project Schedule
-
-### Deliverables (Due Fridays)
-- Week 2 (Jan 24): Email Project Team Names to yihuihe@wharton.upenn.edu
-- Week 3 (Jan 31): Report Draft 1 + Code + Self Critique
-- Week 4 (Feb 7): Slides Draft 1
-- Week 5 (Feb 14): Report Draft 2 + Code + Self Critique
-- Week 6 (Feb 21): Slides Draft 2
-- Week 7 (Feb 28): Report Draft 3 + Code + Self Critique
-- Week 8: ⚡ Lightning Talks in Class (Mar 5/7) & Slides Draft 3 due Friday ⚡
-- Spring Break (Mar 8-16)
-- Week 9 (Mar 21): Report Draft 4 + Code + Self Critique
-- Week 10 (Mar 28): Slides Draft 4
-- Week 11 (Apr 4): Report Draft 5 + Code + Self Critique
-- Week 12 (Apr 11): Slides Draft 5
-- Week 13: Final Presentations in Class (Apr 22/24) & Report Draft 6 + Code + Self Critique due Friday (Apr 18)
-- Week 14 (Apr 29): Final Report + Code + Self Critique Due
-
-Note: Instructions for peer feedback will be added throughout the semester for each deliverable.
-
-Each draft builds on the previous one, incorporating feedback and new results. You'll meet with course staff three times during the semester to discuss your progress.
-
-## Project Grading
-
-Each deliverable is graded on five components:
-- Report (20%): Problem statement, methodology, results
-- Implementation (35%): Working code, tests, experiments
-- Development Process (15%): Logs, decisions, iterations
-- Critiques (15%): Reflection and planning
-  - Self-critiques (required)
-  - Peer critiques (when assigned)
-  - Response to feedback
-- Repository Structure (15%): Organization, documentation, clarity
-
-Remember:
-- Quality > Quantity
-- Working > Perfect
+Our key contributions include:
+- A systematic pipeline for modeling travel behavior and energy usage
+- Benchmark statistics comparing different routing models
 
 ## Repository Structure
 
 ```
-your-repo/
-├── README.md                    # This file
-├── report.md                    # Your project report
-├── notebooks/                   # Jupyter notebooks
-├── src/                        # Source code
-├── tests/                      # Test files
-└── docs/
-    ├── finding_project_ideas.md    # Guide to finding your project
-    ├── assignments/                # Assignment instructions
-    ├── llm_exploration/           # AI conversation logs
-    └── development_log.md         # Progress & decisions
+├── src/                  # Source code for final models and algorithms
+├── notebooks/            # Jupyter notebooks for analysis and demonstrations
+├── docs/                 # Documentation files
+├── dataset                 # dataset files
+├── report.md             # Comprehensive project report with methodology and findings
+├── requirements.txt      # Python dependencies
+└── named_development_history/ # Archive of development process and iterations
 ```
 
-## Development Environment
+The `named_development_history/` folder contains our journey through model exploration and development, preserved for reference purposes. However, the final, optimized code exists in the `src` directory.
 
-### Editor Setup
-We recommend using one of these editors:
+## Setup Instructions
 
-1. **VS Code** (Free, Industry Standard)
-   - Download from https://code.visualstudio.com/
-   - Install recommended extensions:
-     - Python
-     - GitHub Pull Requests
-     - GitHub Copilot (FREE for students!)
-       - Sign up at https://education.github.com/discount_requests/application
-       - This gives you FREE access to GitHub Copilot
-       - Plus other GitHub student benefits
-
-2. **Cursor** (Paid Alternative, $20/month)
-   - Built on VS Code with additional AI features
-   - Same interface and shortcuts as VS Code
-   - Same extensions work
-   - Added AI assistance for code exploration
-
-Both editors work well with Git and provide excellent AI assistance. VS Code with Copilot is recommended for beginners as it's free with your student status and is the industry standard.
-
-### Required Tools
-- Python 3.10+
-- PyTorch
-- Jupyter Notebook/Lab
+### Prerequisites
+- Python 3.8 or higher
 - Git
 
-## Git Setup and Workflow
-
-### First Time Setup
-1. Fork this repository
-   - Click "Fork" in the top right
-   - Name it `STAT-4830-[team-name]-project`
-   - This creates your own copy that can receive updates
-
-2. Set up Git (if you haven't already):
-   If you installed VS Code or Cursor, they'll help you install Git! Both editors have excellent Git integration built in.
-   
-   For detailed instructions, see the [Official Git installation guide](https://github.com/git-guides/install-git)
-
-   After installing, set up your identity:
-   ```bash
-   git config --global user.name "Your Name"
-   git config --global user.email "your.email@upenn.edu"
+### Environment Setup
+1. Clone the repository:
+   ```
+   git clone [repository-url]
+   cd [repository-name]
    ```
 
-3. Clone your fork:
-   ```bash
-   # HTTPS (easier):
-   git clone https://github.com/[your-username]/STAT-4830-[team-name]-project.git
-
-   # SSH (if you've set up SSH keys):
-   git clone git@github.com:[your-username]/STAT-4830-[team-name]-project.git
-   
-   cd STAT-4830-[team-name]-project
+2. Create and activate a virtual environment (recommended):
+   ```
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-4. Add upstream remote (to get updates):
-   ```bash
-   # HTTPS:
-   git remote add upstream https://github.com/damek/STAT-4830-project-base.git
-
-   # SSH:
-   git remote add upstream git@github.com:damek/STAT-4830-project-base.git
+3. Install dependencies:
+   ```
+   pip install -r requirements.txt
    ```
 
-5. Add your team members as collaborators:
-   - Go to your repo on GitHub
-   - Settings → Collaborators → Add people
-   - Add using their GitHub usernames
+4. API Keys (if needed):
+   - OpenStreetMap API is used but doesn't require authentication
 
-### Working on Your Project
-1. Create a new branch:
-   ```bash
-   git checkout -b exploration
-   ```
-
-2. Make changes and commit:
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   git push origin exploration
-   ```
-
-### Getting Updates
-When the base repository is improved:
-```bash
-# Get updates
-git fetch upstream
-git checkout main
-git merge upstream/main
-
-# Update your branch
-git checkout exploration
-git merge main
-```
-
-### Troubleshooting
-- Having Git issues? Post on Ed Discussion
-- Can't push/pull? Check if you're using HTTPS or SSH
-- Windows path too long? Enable long paths:
-  ```bash
-  git config --system core.longpaths true
-  ```
-
-## Getting Help
-- Use AI tools (ChatGPT, GitHub Copilot)
-- See course staff for technical issues
-- Document your progress
+5. Running Code
+   - The Code works in isolation as long as the data is stored locally. (we have attached the data to a folder called dataset).
 
 
+### Demo Notebook
 
+We left out the data processing and model training and simply inputted a saved model.pth file that can be downloaded from within our repo (for the sake of computational resources for the reproducer). 
 
+This notebook provides a step-by-step walkthrough of our approach of benchmarking our key successful models against the deterministic approaches of models like A* and Djikstra.
 
-
+## [Interactive Demo] https://drive.google.com/file/d/1TLNbLeSUoYlhsLNXXKqOkOlkR76TOOoM/view?usp=sharing 
